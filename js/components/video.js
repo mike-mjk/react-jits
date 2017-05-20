@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchVideos } from '../actions';
 import { Link } from 'react-router-dom';
 
+//refactor push test
 class Video extends React.Component {
 	componentDidMount() {
 		this.props.fetchVideos();
