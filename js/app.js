@@ -20,6 +20,7 @@ import axios from 'axios';
 
 
 export const getSearchResults = (term) => {
+  console.log('getSearchResults');
 	const baseURL = 'https://www.googleapis.com/youtube/v3/search';
 	const query = {params: {
     q: term,
@@ -28,7 +29,10 @@ export const getSearchResults = (term) => {
     maxResults: 15,
     key: 'AIzaSyCIdQfwZ7qDSA1BhnfzEBa-6AB8ma8YY9k'
   }}
-  const request = axios.get(baseURL, query);
+  const request = axios.get(baseURL, query)
+    .then(response => {
+      transformResults(response);
+    })
   return request;
 }
 

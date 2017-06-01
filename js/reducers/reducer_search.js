@@ -5,10 +5,13 @@ import { transformResults } from '../app';
 export default function(state = {}, action) {
 	switch(action.type) {
 	case SEARCH_YOUTUBE:
+		console.log('hi');
 		//takes search results and extracts the needed data
-		var items = transformResults(action.payload.data.items);
-		return _.mapKeys(items, 'id');
+		// var items = transformResults(action.payload.data.items);
+		// return _.mapKeys(items, 'id');
+		return (action.payload.data.items);
 	default:
+		console.log('hey');
 		return state
 
 	}

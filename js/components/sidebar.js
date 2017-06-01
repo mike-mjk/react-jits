@@ -22,20 +22,20 @@ class SideBar extends React.Component {
 
 				return (
 			    <div className="col-xs-12 xcol-md-6">
-		      <div className="thumbnail">
-		        <div className="row">
-		          <div className="col-xs-5 xcol-md-12">
-		            <Link to={videoUrl}><img className="width-100" src={thumbUrl} /></Link>
-		          </div>
-		          <div className="col-xs-7 xcol-md-12">
-		            <div className="caption">
-		              <h3 className="oneline"><Link to={videoUrl}>{video.title}</Link></h3>
-		              <p>{video.channelTitle}</p>
-		            </div>
-		          </div>
-		        </div>
-		      </div>
-		    </div>
+		   			<div className="thumbnail">
+	    				<div className="row">
+		         		<div className="col-xs-5 xcol-md-12">
+		            	<Link to={videoUrl}><img className="width-100" src={thumbUrl} /></Link>
+		          	</div>
+		          	<div className="col-xs-7 xcol-md-12">
+		            	<div className="caption">
+		              	<h3 className="oneline"><Link to={videoUrl}>{video.title}</Link></h3>
+		              	<p>{video.channelTitle}</p>
+		            	</div>
+		          	</div>
+		        	</div>
+		      	</div>
+		    	</div>
 				)
 			})
 		)
@@ -44,7 +44,6 @@ class SideBar extends React.Component {
 		return (
 			<div>
 	      <div className="row">
-	      	This shows up
 	      	{this.renderList()}
 	      </div>
 		  </div>

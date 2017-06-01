@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 
-var VideoSchema = new mongoose.Schema({
+const VideoSchema = new mongoose.Schema({
     id: { type: String, required: true, unique: true },
     title: { type: String, required: true },
     channelTitle: { type: String, required: true },
@@ -13,6 +13,6 @@ var VideoSchema = new mongoose.Schema({
     //dateAdded: { type: Number, required: true }
 });
 
-var Video = mongoose.model('Video', VideoSchema);
+const Video = mongoose.model('Video', VideoSchema);
 
 module.exports = Video;

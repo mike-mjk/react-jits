@@ -1,21 +1,33 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 mongoose.Promise = Promise;
 
-var config = require('./config');
+const Authentication = require('./controllers/authentication');
+const passportService = require('./services/passport');
+const passport = require('passport');
 
-var app = express();
+const requireAuth = passport.authenticate('jwt', { session: false });
+const requireSignin = passport.authenticate('local', { session: false });
+
+const config = require('./config');
+
+const app = express();
 app.use(bodyParser.json());
 app.use(express.static('build'));
 
-// var mustacheExpress = require('mustache-express'); 
+// const mustacheExpress = require('mustache-express'); 
 // app.engine('html', mustacheExpress());
 // app.set('view engine', 'mustache'); 
 // app.set('views', __dirname + '/public');
 
 // Routes ------------------------------------
-var Video = require('./models/model_video');
+const Video = require('./models/model_video');
+
+//example auth route
+// app.get('/', requireAuth, function(req, res) {
+//     res.send({ totally: 'authorized' });
+// });
 
 app.get('/videos', function(req, res){
     Video.find().sort({ _id: 'desc' }).exec(function(err, videos) {
@@ -27,6 +39,9 @@ app.get('/videos', function(req, res){
         res.json(videos);
     });
 });
+
+app.post('/signin', requireSignin, Authentication.signin);
+app.post('/signup', Authentication.signup);
 
 app.post('/videos', function(req, res){
     Video.create({

@@ -7,7 +7,7 @@ module.exports = {
     entry: path.resolve(__dirname, 'js/index.js'),
     output: {
         path: path.resolve(__dirname, 'build/js'),
-        filename: 'bundle.js',
+        filename: 'bundle.js'
     },
     devtool: 'inline-source-map',
     module: {
@@ -15,7 +15,7 @@ module.exports = {
         {
           test: /\.js$/,
           exclude: /(node_modules)/,
-          loader: 'babel',
+          loader: 'babel'
         },
       ]
     }

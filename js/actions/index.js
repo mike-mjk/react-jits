@@ -26,7 +26,9 @@ export function fetchVideo(id) {
 }
 
 export function searchYoutube(term) {
+	console.log('term');
 	const request = getSearchResults(term)
+	console.log('request', request);
 	return {
 		type: SEARCH_YOUTUBE,
 		payload: request
