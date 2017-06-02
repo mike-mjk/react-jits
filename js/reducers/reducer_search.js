@@ -5,13 +5,9 @@ import { transformResults } from '../app';
 export default function(state = {}, action) {
 	switch(action.type) {
 	case SEARCH_YOUTUBE:
-		console.log('hi');
-		//takes search results and extracts the needed data
-		// var items = transformResults(action.payload.data.items);
-		// return _.mapKeys(items, 'id');
-		return (action.payload.data.items);
+		console.log('case SEARCH_YOUTUBE in reducer is called with this action.payload:', action.payload);
+		return (action.payload);
 	default:
-		console.log('hey');
 		return state
 
 	}

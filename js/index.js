@@ -16,7 +16,7 @@ import VideoWatch from './components/watch'
 import SideBar from './components/sidebar'
 import Search from './components/search';
 
-const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
+const createStoreWithMiddleware = applyMiddleware(promise, thunk)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>

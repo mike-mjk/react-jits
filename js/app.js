@@ -32,6 +32,7 @@ export const getSearchResults = (term) => {
   const request = axios.get(baseURL, query)
     .then(response => {
       transformResults(response);
+      console.log('under transformResults')
     })
   return request;
 }

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 class Search extends React.Component {
 	componentDidMount() {
-		this.props.searchYoutube();
+		// this.props.searchYoutube();
 	}
 
 	renderSearch() {

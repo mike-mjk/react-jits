@@ -1,8 +1,7 @@
 import React from 'react';
-// import { getSearchResults } from '../app';
 import { searchYoutube } from '../actions';
+import { withRouter } from 'react-router';
 import { connect } from 'react-redux';
-// import { browserRouter as react-router } from 'react-router-dom';
 
 class Search extends React.Component {
   constructor(props) {
@@ -15,20 +14,17 @@ class Search extends React.Component {
     }
   }
 
+  //Event handler calls searchYout
   onFormSubmit(e) {
     e.preventDefault();
-    console.log(this.props.searchYoutube);
-    // this.props.search(this.state.term);
-    this.props.searchYoutube;
-    console.log('submitted2');
-    // console.log(browserHistory);
-    // browserHistory.push('/search');
-
-    // this.props.history.push('/search');
+    console.log('onFormSubmit is called with this term:', this.state.term)
+    if (this.state.term != '') {
+      this.props.searchYoutube(this.state.term, this.props.history);
+    }
   }
 
   render() {
-    console.log('in Search', this.props)
+    console.log('Search render');
     return (
       <form onSubmit={this.onFormSubmit} id="search-youtube-form" className="navbar-form">
         
@@ -49,10 +45,12 @@ class Search extends React.Component {
 
 }
 
+const SearchWithRouter = withRouter(Search);
+
 class NavBar extends React.Component {
 
   render() {
-    console.log(this.props.searchYoutube);
+    console.log('navbar render');
     return (
       <nav className='navbar navbar-default'>
         <div className='container'>
@@ -61,7 +59,7 @@ class NavBar extends React.Component {
             <a href="/index.html" className="navbar-brand">Jiu-Jitsu Tube</a>
           </div>
 
-          <Search searchYoutube={this.props.searchYoutube} />
+          <SearchWithRouter searchYoutube={this.props.searchYoutube} />
           
         </div>
       </nav>
